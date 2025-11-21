@@ -1,4 +1,4 @@
-name: sample
+name: my-tech-blog-pipeline
 on:
   push:
   workflow_dispatch:
