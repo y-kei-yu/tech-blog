@@ -1,17 +1,20 @@
-import Link from "next/link";
+import { getAllArticles } from "../blogAPI";
+import ArticleList from "./components/ArticleList";
 
+export default async function Page() {
+  const articles = await getAllArticles();
+  console.log(articles);
 
-export default function Page() {
   return (
     <>
       <div>
         <h1>Home</h1>
       </div>
-      <h1 className=" text-red-500 text-3xl font-bold underline">
-        Hello world!
-        Hello Japan!
-      </h1>
-      <button className="btn btn-info">Info</button>
+      <section className="w-full flex flex-col items-center px-3">
+        <ArticleList articles={articles} />
+      </section>
+
+
     </>
   );
 }
