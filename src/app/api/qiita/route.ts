@@ -1,5 +1,15 @@
-import { Article } from "@/data/types";
+import { Article } from "@/types/Article";
 import { NextResponse } from "next/server";
+
+type QiitaData = {
+  id: string;
+  title: string;
+  created_at: string;
+  url: string;
+  user: {
+    profile_image_url: string;
+  };
+};
 
 export async function GET(req: Request) {
   const apiURL = process.env.QIITA_API_URL;
@@ -10,15 +20,19 @@ export async function GET(req: Request) {
   const res = await fetch(url, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${accessToken} `,
+      Authorization: `Bearer ${accessToken}`,
     },
   });
-  console.log(res);
-  const data = await res.json();
+  console.log([0]);
+  const QiitaData = await res.json();
 
-  // data.map((item: Article) => {
-  //   item.thumbnail = item.user.profile_image_url;
-  // });
+  const articles: Article[] = QiitaData.map((item: QiitaData) => ({
+    id: item.id,
+    title: item.title,
+    date: item.created_at,
+    url: item.url,
+    thumbnail: item.user.profile_image_url,
+  }));
 
-  return NextResponse.json(data);
+  return NextResponse.json(articles);
 }

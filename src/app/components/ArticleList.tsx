@@ -1,4 +1,4 @@
-import { Article } from "@/data/types";
+import { Article } from "@/types/Article";
 import { ArticleCard } from "./ArticleCard";
 
 type ArticleListProps = {

@@ -1,7 +1,12 @@
-import { Article } from "./data/types";
+import { Article } from "./types/Article";
 
 export const getAllArticles = async (): Promise<Article[]> => {
-  const res = await fetch(`http://localhost:3001/posts`, { cache: "no-store" });
+  // json-serverから記事データを取得
+  //const res = await fetch(`http://localhost:3001/posts`, { cache: "no-store" });
+  // QiitaAPIから記事データを取得
+  const res = await fetch(`http://localhost:3000/api/qiita`, {
+    cache: "no-store",
+  });
   const articles = await res.json();
   return articles;
 };
