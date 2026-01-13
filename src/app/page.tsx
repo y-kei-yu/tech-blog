@@ -6,6 +6,9 @@ export default async function Page() {
   const articles = await getAllArticles();
   console.log(articles);
 
+  // エラーを意図的に発生させる
+  // throw new Error('Test error handling');
+
   return (
     <>
       <div className="w-full flex flex-col px-3 my-6">
