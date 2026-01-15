@@ -1,5 +1,9 @@
-export default function Morebutton() {
+import Link from "next/link";
+
+export default function Morebutton({ href }: { href: string }) {
     return (
-        <button className="btn">もっと見る→</button>
+        <Link href={href}>
+            <button className="btn">もっと見る→</button>
+        </Link>
     )
 }
