@@ -1,7 +1,7 @@
-import { getAllArticles } from "@/blogAPI";
+import { fetchArticles } from "@/blogAPI";
 
 export default async function Individuals() {
-    const articles = await getAllArticles();
+    const articles = await fetchArticles();
     console.log(articles);
 
     return (

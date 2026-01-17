@@ -1,6 +1,6 @@
 import { Article } from "./types/Article";
 
-export const getAllArticles = async (): Promise<Article[]> => {
+export const fetchArticles = async (): Promise<Article[]> => {
   // json-serverから記事データを取得
   //const res = await fetch(`http://localhost:3001/posts`, { cache: "no-store" });
   // QiitaAPIから記事データを取得

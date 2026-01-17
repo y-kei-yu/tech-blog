@@ -1,9 +1,9 @@
-import { getAllArticles } from "../blogAPI";
+import { fetchArticles } from "../blogAPI";
 import ArticleList from "./components/ArticleList";
 import Morebutton from "./components/layout/Morebutton";
 
 export default async function Page() {
-  const articles = await getAllArticles();
+  const articles = await fetchArticles();
   console.log(articles);
 
   // エラーを意図的に発生させる
