@@ -3,7 +3,7 @@ import ArticleList from "./components/ArticleList";
 import Morebutton from "./components/layout/Morebutton";
 
 export default async function Page() {
-  const articles = await fetchArticles();
+  const articles = await fetchArticles(4, 1);
   console.log(articles);
 
   // エラーを意図的に発生させる
