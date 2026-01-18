@@ -5,7 +5,7 @@ export default function Header() {
     return (
         <header className='w-full flex justify-between items-center py-5 px-8 bg-gray-800 text-white'>
             <div>
-                <h1 className='text-3xl font-extrabold'>
+                <h1 className='text-3xl font-extrabold' data-testid="header-title">
                     <Link href="/">My Tech Blog</Link>
                 </h1>
             </div>
