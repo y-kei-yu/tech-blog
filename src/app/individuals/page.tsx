@@ -1,5 +1,6 @@
 import { fetchArticles } from "@/blogAPI";
 import ArticleList from "../components/ArticleList";
+import Pagination from "../components/layout/Pagination";
 
 export default async function Individuals() {
     const articles = await fetchArticles(8, 1);
@@ -13,6 +14,7 @@ export default async function Individuals() {
                 </div>
                 <ArticleList articles={articles} />
             </section>
+            <Pagination />
         </div>
     )
 }
