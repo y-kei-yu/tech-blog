@@ -4,17 +4,18 @@ import Pagination from "../components/layout/Pagination";
 
 
 type IndividualsProps = {
-    searchParams?: {
-        page?: string;
-    };
+    searchParams?: { page?: string } | Promise<{ page?: string }>;
 };
 
 export default async function Individuals({ searchParams }: IndividualsProps) {
-
-    const page = Number(searchParams?.page ?? "1");
+    const perPage = 8;
+    const resolvedSearchParams = await Promise.resolve(searchParams);
+    const page = Number(resolvedSearchParams?.page ?? "1");
     const safePage = Number.isFinite(page) && page > 0 ? page : 1;
 
-    const articles = await fetchArticles(8, safePage);
+    const articles = await fetchArticles(perPage, safePage);
+    const hasNextPage = articles.length === perPage;
+
     console.log(articles)
 
     return (
@@ -25,7 +26,7 @@ export default async function Individuals({ searchParams }: IndividualsProps) {
                 </div>
                 <ArticleList articles={articles} />
             </section>
-            <Pagination />
+            <Pagination currentPage={safePage} hasNextPage={hasNextPage} />
         </div>
     )
 }
