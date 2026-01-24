@@ -4,13 +4,16 @@ import Pagination from "../components/layout/Pagination";
 
 
 type IndividualsProps = {
-    searchParams?: { page?: string } | Promise<{ page?: string }>;
+    searchParams?: {
+        page?: string;
+    };
 };
 
 export default async function Individuals({ searchParams }: IndividualsProps) {
     const perPage = 8;
-    const resolvedSearchParams = await Promise.resolve(searchParams);
-    const page = Number(resolvedSearchParams?.page ?? "1");
+    const sp = await Promise.resolve(searchParams)
+    const pagRaw = sp?.page;
+    const page = pagRaw ? Number(pagRaw) : 1;
     const safePage = Number.isFinite(page) && page > 0 ? page : 1;
 
     const articles = await fetchArticles(perPage, safePage);
