@@ -19,6 +19,13 @@ export default async function Page() {
           </div>
           <ArticleList articles={articles} />
         </section>
+        <section className="w-full flex flex-col  px-3 mt-6">
+          <div className="flex justify-between">
+            <h2 className="text-2xl font-bold">ブログ記事</h2>
+            <Morebutton href="/individuals" />
+          </div>
+          <ArticleList articles={articles} />
+        </section>
       </div>
     </>
   );
