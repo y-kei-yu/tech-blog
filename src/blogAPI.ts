@@ -1,5 +1,6 @@
 import { Article } from "./types/Article";
 
+//Qiita用
 export const fetchArticles = async (
   // 1ページに何件データを表示するか
   perPage: number,
@@ -10,9 +11,6 @@ export const fetchArticles = async (
   //const res = await fetch(`http://localhost:3001/posts`, { cache: "no-store" });
 
   const baseURL = process.env.BASE_URL;
-  // console.log(`Fetching articles: perPage=${perPage}, page=${page}`);
-
-  // console.log(`ifのあとFetching articles: perPage=${perPage}, page=${page}`);
 
   // QiitaAPIから記事データを取得
   const res = await fetch(
@@ -28,6 +26,7 @@ export const fetchArticles = async (
   return articles;
 };
 
+// MicroCMS用
 export const fetchMicroCMSArticles = async (
   // 1ページに何件データを表示するか
   perPage: number,
