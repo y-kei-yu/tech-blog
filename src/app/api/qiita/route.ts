@@ -17,6 +17,7 @@ const FALLBACK_THUMBNAIL =
 export async function GET(req: Request) {
   const apiURL = process.env.QIITA_API_URL;
   const accessToken = process.env.QIITA_ACCESS_TOKEN;
+  console.log("Qiita API URL:", apiURL);
 
   // 環境変数が未設定なら 500 で返す
   if (!apiURL || !accessToken) {
