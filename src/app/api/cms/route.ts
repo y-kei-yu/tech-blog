@@ -1,10 +1,22 @@
 import { NextResponse } from "next/server";
+import { Article } from "@/types/Article";
 
 type MicroCMSItem = {
   id: string;
   title: string;
-  description: string;
-  content: string;
+  createdAt: string;
+  thumbnail?: {
+    url: string;
+    height?: number;
+    width?: number;
+  };
+};
+
+type MicroCMSListResponse = {
+  contents: MicroCMSItem[];
+  totalCount: number;
+  offset: number;
+  limit: number;
 };
 
 export async function GET(req: Request) {
@@ -63,7 +75,18 @@ export async function GET(req: Request) {
       { status: res.status },
     );
   }
-  const microCMSItems: MicroCMSItem[] = await res.json();
+  const microCMSResponse: MicroCMSListResponse = await res.json();
+  const microCMSData = microCMSResponse.contents;
 
-  return NextResponse.json(microCMSItems);
+  const microCMSArticles: Article[] = microCMSData.map((item) => ({
+    id: item.id,
+    title: item.title,
+    date: item.createdAt.substring(0, 10),
+    // MicroCMSの記事はアプリ内の詳細ページへ遷移させる想定（外部URLが無いので）
+    url: `/blogs/${item.id}`,
+    // Article.thumbnail は string 想定なので、画像URLだけを渡す
+    thumbnail: item.thumbnail?.url ?? "",
+  }));
+
+  return NextResponse.json(microCMSArticles);
 }
