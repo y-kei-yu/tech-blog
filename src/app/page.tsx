@@ -1,4 +1,4 @@
-import { fetchArticles, fetchMicroCMSArticles } from "../blogAPI";
+import { fetchArticles, fetchMicroCMSArticles } from "../contact";
 import ArticleList from "./components/ArticleList";
 import Morebutton from "./components/layout/Morebutton";
 

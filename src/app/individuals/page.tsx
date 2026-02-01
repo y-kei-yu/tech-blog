@@ -1,11 +1,11 @@
-import { fetchArticles } from "@/blogAPI";
+import { fetchArticles } from "@/contact";
 import ArticleList from "../components/ArticleList";
 import Pagination from "../components/layout/Pagination";
 
 //Individualsページに渡される props の型 （URL のクエリ文字列）
 type IndividualsProps = {
     searchParams?: {
-        page?: string | Promise<{ page?: string }>;
+        page?: string;
     };
 };
 
