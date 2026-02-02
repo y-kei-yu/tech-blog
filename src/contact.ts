@@ -1,6 +1,6 @@
 import { Article } from "./types/Article";
 
-//Qiita用
+//Qiita一覧ページ用
 export const fetchArticles = async (
   // 1ページに何件データを表示するか
   perPage: number,
@@ -26,7 +26,7 @@ export const fetchArticles = async (
   return articles;
 };
 
-// MicroCMS用
+// MicroCMS一覧表示用
 export const fetchMicroCMSArticles = async (
   // 1ページに何件データを表示するか
   perPage: number,
@@ -35,7 +35,7 @@ export const fetchMicroCMSArticles = async (
 ): Promise<Article[]> => {
   const baseURL = process.env.BASE_URL;
 
-  // MicroCMSから記事データを取得
+  // /api/cms (route.ts) を呼び出し、MicroCMSの一覧データを取得する
   const res = await fetch(
     `${baseURL}/api/cms?per_page=${perPage}&page=${page}`,
     {
@@ -47,4 +47,17 @@ export const fetchMicroCMSArticles = async (
   }
   const articles: Article[] = await res.json();
   return articles;
+};
+
+// MicroCMSブログ詳細ページ表示用
+export const fetchMicroCMSBlogDetail = async (id: string): Promise<Article> => {
+  const baseURL = process.env.BASE_URL;
+
+  // MicroCMSから記事データを取得
+  const res = await fetch(`${baseURL}/api/cms/${id}`, { cache: "no-store" });
+  if (!res.ok) {
+    throw new Error("Failed to fetch blog detail from MicroCMS");
+  }
+  const article: Article = await res.json();
+  return article;
 };
