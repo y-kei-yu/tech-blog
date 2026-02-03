@@ -1,3 +1,4 @@
+import { BlogDetail } from "@/types/BlogDetail";
 import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
@@ -35,5 +36,23 @@ export async function GET(request: Request) {
   }
   const data = await res.json();
   console.log("MicroCMS Detail Data:", data);
+  const microCMSBlogDetail: BlogDetail = {
+    id: data.id,
+    createdAt: data.createdAt,
+    updatedAt: data.updatedAt,
+    publishedAt: data.publishedAt,
+    revisedAt: data.revisedAt,
+    title: data.title,
+    description: data.description,
+    content: data.content,
+    thumbnail: {
+      url: data.thumbnail.url,
+      height: data.thumbnail.height,
+      width: data.thumbnail.width,
+    },
+    tags: data.tags,
+    writer: data.writer,
+  };
+  console.log("Mapped MicroCMS Blog Detail:", microCMSBlogDetail);
   return NextResponse.json(data);
 }

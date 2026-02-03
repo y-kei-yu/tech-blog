@@ -1,4 +1,5 @@
 import { Article } from "./types/Article";
+import { BlogDetail } from "./types/BlogDetail";
 
 //Qiita一覧ページ用
 export const fetchArticles = async (
@@ -50,7 +51,9 @@ export const fetchMicroCMSArticles = async (
 };
 
 // MicroCMSブログ詳細ページ表示用
-export const fetchMicroCMSBlogDetail = async (id: string): Promise<Article> => {
+export const fetchMicroCMSBlogDetail = async (
+  id: string,
+): Promise<BlogDetail> => {
   const baseURL = process.env.BASE_URL;
 
   // MicroCMSから記事データを取得
@@ -58,6 +61,6 @@ export const fetchMicroCMSBlogDetail = async (id: string): Promise<Article> => {
   if (!res.ok) {
     throw new Error("Failed to fetch blog detail from MicroCMS");
   }
-  const article: Article = await res.json();
-  return article;
+  const blogDetail: BlogDetail = await res.json();
+  return blogDetail;
 };
