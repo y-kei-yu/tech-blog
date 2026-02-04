@@ -38,10 +38,10 @@ export async function GET(request: Request) {
   console.log("MicroCMS Detail Data:", data);
   const microCMSBlogDetail: BlogDetail = {
     id: data.id,
-    createdAt: data.createdAt,
-    updatedAt: data.updatedAt,
-    publishedAt: data.publishedAt,
-    revisedAt: data.revisedAt,
+    createdAt: data.createdAt.substring(0, 10),
+    updatedAt: data.updatedAt.substring(0, 10),
+    publishedAt: data.publishedAt.substring(0, 10),
+    revisedAt: data.revisedAt.substring(0, 10),
     title: data.title,
     description: data.description,
     content: data.content,
@@ -54,5 +54,5 @@ export async function GET(request: Request) {
     writer: data.writer,
   };
   console.log("Mapped MicroCMS Blog Detail:", microCMSBlogDetail);
-  return NextResponse.json(data);
+  return NextResponse.json(microCMSBlogDetail);
 }
