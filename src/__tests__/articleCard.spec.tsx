@@ -13,6 +13,7 @@ const mockArticle = {
 describe("ArticleCard", () => {
     test("タイトルが表示される", () => {
         render(<ArticleCard article={mockArticle} />);
+
         expect(screen.getByText("Test Article")).toBeInTheDocument();
     });
 
@@ -20,6 +21,7 @@ describe("ArticleCard", () => {
         render(<ArticleCard article={mockArticle} />);
         expect(screen.getByText("2024-06-01")).toBeInTheDocument();
     });
+
 
     test("サムネイル画像が表示される", () => {
         render(<ArticleCard article={mockArticle} />);
