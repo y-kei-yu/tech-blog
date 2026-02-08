@@ -5,7 +5,7 @@ import { describe, expect, test } from "vitest";
 const mockArticle = {
     id: "test-id",
     title: "Test Article",
-    date: "2024-06-01",
+    date: "2026-02-08",
     url: "https://example.com",
     thumbnail: "https://example.com/thumb.png",
 };
@@ -19,7 +19,7 @@ describe("ArticleCard", () => {
 
     test("日付が表示される", () => {
         render(<ArticleCard article={mockArticle} />);
-        expect(screen.getByText("2024-06-01")).toBeInTheDocument();
+        expect(screen.getByText("2026-02-08")).toBeInTheDocument();
     });
 
 
