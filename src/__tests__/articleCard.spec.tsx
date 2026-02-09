@@ -13,7 +13,6 @@ const mockArticle = {
 describe("ArticleCard", () => {
     test("タイトルが表示される", () => {
         render(<ArticleCard article={mockArticle} />);
-
         expect(screen.getByText("Test Article")).toBeInTheDocument();
     });
 

@@ -1,8 +1,7 @@
 import * as mock from "@/app/components/ArticleCard";
 import ArticleList from "@/app/components/ArticleList";
 import { render } from "@testing-library/react";
-import { beforeEach } from "node:test";
-import { describe, expect, test, vi } from "vitest";
+import { beforeEach, describe, expect, test, vi } from "vitest";
 
 
 vi.mock("@/app/components/ArticleCard", () => ({
@@ -39,7 +38,6 @@ describe("ArticleList", () => {
     beforeEach(() => {
         mockedArticleCard.mockClear();
     });
-
     test("articlesの件数分、ArticleCardが呼ばれる", () => {
         render(<ArticleList articles={mockArticles} />);
         console.log(mockedArticleCard.mock.calls);
@@ -47,19 +45,10 @@ describe("ArticleList", () => {
     });
     test("記事が０件の時は何も表示されない", () => {
         render(<ArticleList articles={[]} />);
-        expect(mockedArticleCard).toHaveLength(0);
+        expect(mockedArticleCard).not.toHaveBeenCalled();
     });
     test("記事が1件のとき1件だけ表示される", () => {
         render(<ArticleList articles={[mockArticles[0]]} />);
         expect(mockedArticleCard).toHaveBeenCalledTimes(1);
     });
-    // test("記事が配列の順番通りに表示される", () => {
-    //     render(<ArticleList articles={mockArticles} />);
-
-    //     const titles = screen.getAllByRole("heading", { level: 2 });
-
-    //     expect(titles[0]).toHaveTextContent("Article 1");
-    //     expect(titles[1]).toHaveTextContent("Article 2");
-    //     expect(titles[2]).toHaveTextContent("Article 3");
-    // });
 });
