@@ -14,8 +14,6 @@ export async function GET(request: Request) {
   }
   // api/cms/{id} へのリクエストURLから記事idを取得し、MicroCMSの詳細取得API用URLを作成する
   const url = `${apiURL}/${request.url.split("/").pop()}`;
-  console.log("Request URL:", request.url);
-  console.log("MicroCMS Detail API URL:", url);
 
   const res = await fetch(url, {
     method: "GET",
@@ -53,6 +51,6 @@ export async function GET(request: Request) {
     tags: data.tags,
     writer: data.writer,
   };
-  console.log("Mapped MicroCMS Blog Detail:", microCMSBlogDetail);
+
   return NextResponse.json(microCMSBlogDetail);
 }

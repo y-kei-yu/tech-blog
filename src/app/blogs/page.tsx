@@ -20,8 +20,6 @@ export default async function Blogs({ searchParams }: BlogsProps) {
     const safePage = Number.isFinite(pageNumber) && pageNumber > 0 ? pageNumber : 1;
     const microCMSArticles = await fetchMicroCMSArticles(perPage, safePage);
     const hasNextPage = microCMSArticles.length === perPage;
-    console.log("microCMSArticles:", microCMSArticles);
-    console.log("microCMShasNextPage:", hasNextPage);
 
     return (
         <div className="w-full flex flex-col px-3 my-6">

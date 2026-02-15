@@ -25,17 +25,18 @@ export default async function Individuals({ searchParams }: IndividualsProps) {
     const articles = await fetchArticles(perPage, safePage);
     const hasNextPage = articles.length === perPage;
 
-    console.log(articles)
-
     return (
         <div className="w-full flex flex-col px-3 my-6">
-            <section className="w-full flex flex-col  px-3">
+            <section className="w-full flex flex-col px-3">
                 <div className="flex justify-between">
-                    <h2 className="text-2xl font-bold px-3">個人記事一覧</h2>
+                    <h2 className="text-2xl font-bold">個人記事一覧</h2>
                 </div>
                 <ArticleList articles={articles} />
             </section>
-            <Pagination currentPage={safePage} hasNextPage={hasNextPage} />
+
+            <div className="px-3 mt-6">
+                <Pagination currentPage={safePage} hasNextPage={hasNextPage} />
+            </div>
         </div>
     )
 }

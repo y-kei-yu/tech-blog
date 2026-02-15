@@ -29,14 +29,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen bg-gray-100`}
       >
-        <div className="w-full mx-auto px-4">
+        <div className="w-full">
           <Header />
-          {children}
+          <main className="w-full max-w-7xl mx-auto px-6">
+            {children}
+          </main>
           <Footer />
         </div>
-
-
-
       </body>
     </html>
   );

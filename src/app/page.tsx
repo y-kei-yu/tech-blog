@@ -5,7 +5,6 @@ import Morebutton from "./components/layout/Morebutton";
 export default async function Page() {
   const articles = await fetchArticles(4, 1);
   const microCMSArticles = await fetchMicroCMSArticles(4, 1);
-  console.log("microCMSArticles:", microCMSArticles);
 
   // エラーを意図的に発生させる
   // throw new Error('Test error handling');
