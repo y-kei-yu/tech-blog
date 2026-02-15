@@ -17,7 +17,7 @@ export const fetchArticles = async (
   const res = await fetch(
     `${baseURL}/api/qiita?per_page=${perPage}&page=${page}`,
     {
-      cache: "no-store",
+      next: { revalidate: 300 }, // 60秒ごとにデータを再検証
     },
   );
   if (!res.ok) {
