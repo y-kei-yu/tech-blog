@@ -7,14 +7,19 @@ runConfig:
   # cpu: 1
   # memoryMiB: 512
 # Environment variables and secrets.
-# env:
-# Configure environment variables.
-# See https://firebase.google.com/docs/app-hosting/configure#user-defined-environment
-# - variable: MESSAGE
-#   value: Hello world!
-#   availability:
-#     - BUILD
-#     - RUNTIME
+env:
+  # Configure environment variables.
+  # See https://firebase.google.com/docs/app-hosting/configure#user-defined-environment
+  - variable: BASE_URL
+    value: https://tech-blog--tech-blog-297c2.asia-east1.hosted.app/
+  - variable: QIITA_API_URL
+    value: https://qiita.com/api/v2/authenticated_user/items
+  - variable: MICROCMS_API_URL
+    value: https://my-tech-blog-y-kei-yu.microcms.io/api/v1/blogs
+  - variable: QIITA_ACCESS_TOKEN
+    secret: qiitaApiToken
+  - variable: MICROCMS_API_KEY
+    secret: microcmsApiToken
 
 # Grant access to secrets in Cloud Secret Manager.
 # See https://firebase.google.com/docs/app-hosting/configure#secret-parameters
