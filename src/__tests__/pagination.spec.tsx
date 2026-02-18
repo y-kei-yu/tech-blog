@@ -1,14 +1,14 @@
 import Pagination from "@/app/components/layout/Pagination";
 import { render, screen } from "@testing-library/react";
-import { describe } from "node:test";
-import { expect, test, vi } from "vitest";
+import type { ReactNode } from "react";
+import { describe, expect, test, vi } from "vitest";
 
 
 vi.mock("next/link", () => {
     return {
-        default: ({ children, href }: { children: React.ReactNode; href: string }) => {
+        default: ({ children, href }: { children: ReactNode; href: string }) => {
             return <a href={href}>{children}</a>;
-        }
+        },
     };
 });
 describe("Pagination", () => {
