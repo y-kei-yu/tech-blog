@@ -11,7 +11,7 @@ env:
   # Configure environment variables.
   # See https://firebase.google.com/docs/app-hosting/configure#user-defined-environment
   - variable: BASE_URL
-    value: https://tech-blog--tech-blog-297c2.asia-east1.hosted.app/
+    value: https://tech-blog--tech-blog-297c2.asia-east1.hosted.app
   - variable: QIITA_API_URL
     value: https://qiita.com/api/v2/authenticated_user/items
   - variable: MICROCMS_API_URL
