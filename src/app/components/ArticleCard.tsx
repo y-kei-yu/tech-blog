@@ -9,7 +9,10 @@ export const ArticleCard = ({ article }: { article: Article }) => {
                 <figure>
                     <img
                         src={article.thumbnail}
-                        alt={article.title} />
+                        alt={article.title}
+                        className="w-full h-48 object-cover"
+                    />
+
                 </figure>
                 <div className="card-body">
                     <p>{article.date}</p>
