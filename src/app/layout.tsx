@@ -31,7 +31,7 @@ export default function RootLayout({
       >
         <div className="w-full">
           <Header />
-          <main className="w-full max-w-7xl mx-auto px-6">
+          <main className="w-full px-6">
             {children}
           </main>
           <Footer />
